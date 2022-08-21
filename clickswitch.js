@@ -36,6 +36,10 @@ const originalTitles = new Set();
 const replacements = new Map();
 
 const scanForTitles = async () => {
+  if (!window.location.pathname.startsWith("/c/LinusTechTips")) {
+    return;
+  }
+
   for (let a of document.querySelectorAll("h3 a#video-title")) {
     if (a.href && a.href.includes("/watch?v=")) {
       const title = a.title || a.innerText;
@@ -56,9 +60,10 @@ const scanForTitles = async () => {
           } else {
             replacement = replacements.get(title);
           }
+          console.log(replacement);
           if (replacement) {
             a.title = replacement;
-            a.innerText = replacement;
+            a.childNodes[0].nodeValue = replacement;
           }
         });
       }
@@ -66,7 +71,7 @@ const scanForTitles = async () => {
   }
 };
 
-if (window.location.pathname.startsWith("/c/LinusTechTips")) {
-  const observer = new MutationObserver(scanForTitles);
+(() => {
+  let observer = new MutationObserver(scanForTitles);
   observer.observe(document.body, { childList: true, subtree: true });
-}
+})();
