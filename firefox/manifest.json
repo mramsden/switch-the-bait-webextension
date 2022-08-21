@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "ClickSwitch",
-  "version": "0.0.1",
-  "description": "Makes titles less click-baity",
+  "name": "Switch the Bait",
+  "version": "0.0.2",
+  "description": "Remove those annoying clickbaity video titles",
   "content_scripts": [
     {
       "matches": ["https://*.youtube.com/*"],

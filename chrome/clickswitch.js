@@ -10,7 +10,7 @@ const extensionFetch =
 
 const getReplacementTitle = async (original) => {
   const res = await extensionFetch(
-    "https://bitsden-click-switch.herokuapp.com/get-title",
+    "https://bitsden-click-switch.herokuapp.com/api/get-title",
     {
       method: "POST",
       headers: {
